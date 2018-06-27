@@ -41,3 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Sides
+    uniqueID: 398583603
+    locked: 0
+  - name: Arrows
+    uniqueID: 1728690101
+    locked: 0
