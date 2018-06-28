@@ -9,6 +9,7 @@ public class Controller : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        GetInputManager();
     }
 
     // Update is called once per frame
@@ -19,12 +20,24 @@ public class Controller : MonoBehaviour
 
     public void RotateCube()
     {
-        cube.transform.Rotate(new Vector3(45, 90, 0));
+        int x, y, z;
+        x = Random.Range(1, 6) * 15;
+        y = Random.Range(1, 6) * 15;
+        z = Random.Range(1, 6) * 15;
+        cube.transform.Rotate(new Vector3(x, y, z));
     }
 
     private void GetInputManager()
     {
-        inputManager = InputManagerFactory.BuildInputManager();
+        inputManager = InputManagerFactory.BuildInputManager(this);
+    }
+
+    public void ParseCollidedObject(GameObject gameObject)
+    {
+        if(gameObject == cube.gameObject)
+        {
+            RotateCube();
+        }    
     }
 }
 
