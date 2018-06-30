@@ -36,7 +36,19 @@ public class MouseAndKeyboardInputManager : IInputManager
 
     public void CheckForInput()
     {
-        Debug.Log("I'm on a mouse and keyboard");
+        //determine a click
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            Physics.Raycast(ray, out hit);
+            if(hit.collider != null)
+            {
+                controller.ParseCollidedObject(hit.collider.gameObject);
+            }
+        }
+        //fire a raycast
+        //send collider to controller
     }
 
     public bool IsTouch()

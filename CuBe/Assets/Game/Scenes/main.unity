@@ -761,6 +761,9 @@ MonoBehaviour:
   - {fileID: 1125566900}
   - {fileID: 1088966566}
   - {fileID: 1381282177}
+  rotationSpeed: 0.2
+  rotation: {x: 0, y: 0, z: 0, w: 0}
+  progress: 0
 --- !u!65 &819715635
 BoxCollider:
   m_ObjectHideFlags: 0

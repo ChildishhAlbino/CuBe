@@ -6,6 +6,7 @@ public class Controller : MonoBehaviour
 {
     private IInputManager inputManager;
     public Cube cube;
+    private const int rotationSpeed = 1000;
     // Use this for initialization
     void Start()
     {
@@ -20,11 +21,20 @@ public class Controller : MonoBehaviour
 
     public void RotateCube()
     {
-        int x, y, z;
+        float x, y, z;
+        GenerateRandomAngles(out x, out y, out z);
+        var rotatePosition = new Vector3(x, y, z);
+        cube.Rotate(rotatePosition);
+    }
+
+    private void GenerateRandomAngles(out float x, out float y, out float z)
+    {
         x = Random.Range(1, 6) * 15;
         y = Random.Range(1, 6) * 15;
         z = Random.Range(1, 6) * 15;
-        cube.transform.Rotate(new Vector3(x, y, z));
+        Debug.Log(x);
+        Debug.Log(y);
+        Debug.Log(z);
     }
 
     private void GetInputManager()
@@ -34,10 +44,10 @@ public class Controller : MonoBehaviour
 
     public void ParseCollidedObject(GameObject gameObject)
     {
-        if(gameObject == cube.gameObject)
+        if (gameObject == cube.gameObject)
         {
             RotateCube();
-        }    
+        }
     }
 }
 
